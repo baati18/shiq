@@ -29,6 +29,6 @@ app.get('/api/verify', authenticateToken, (req, res) => {
     res.json({ valid: true, userId: req.userId });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
