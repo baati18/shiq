@@ -6,6 +6,7 @@
 - This repository deploys the React app from `frontend/`.
 - Use Vercel and set the project root to `frontend`.
 - Framework preset: Create React App.
+- Set `REACT_APP_API_URL` in `frontend/.env` or use `frontend/.env.example` for your deployed backend.
 
 ### Backend
 - The backend is a separate Express API in `backend/`.

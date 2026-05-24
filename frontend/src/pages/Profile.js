@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 import toast from 'react-hot-toast';
 
 function Profile({ user, setUser }) {
@@ -18,7 +19,7 @@ function Profile({ user, setUser }) {
     const token = localStorage.getItem('token');
     
     try {
-      await axios.put('http://localhost:5000/api/auth/profile', 
+      await axios.put(`${API_BASE_URL}/api/auth/profile`, 
         { phone },
         { headers: { Authorization: `Bearer ${token}` } }
       );

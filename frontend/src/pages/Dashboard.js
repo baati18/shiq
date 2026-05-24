@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import toast from 'react-hot-toast';
@@ -22,9 +23,9 @@ function Dashboard() {
     const token = localStorage.getItem('token');
     try {
       const [statsRes, salariesRes, expensesRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/dashboard/stats', { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get('http://localhost:5000/api/salary', { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get('http://localhost:5000/api/expenses', { headers: { Authorization: `Bearer ${token}` } })
+        axios.get(`${API_BASE_URL}/api/dashboard/stats`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE_URL}/api/salary`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE_URL}/api/expenses`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       
       // Ensure stats object always has all fields as numbers

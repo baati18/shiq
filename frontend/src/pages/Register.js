@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config';
 
 function Register({ setIsAuthenticated, setUser }) {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ function Register({ setIsAuthenticated, setUser }) {
     }
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/register`, {
         username: formData.username,
         email: formData.email,
         phone: formData.phone,

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config';
 
 function Login({ setIsAuthenticated, setUser }) {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function Login({ setIsAuthenticated, setUser }) {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
         username: formData.username,
         password: formData.password
       });

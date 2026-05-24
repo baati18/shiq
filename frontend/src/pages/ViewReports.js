@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 import toast from 'react-hot-toast';
 
 function ViewReports() {
@@ -20,8 +21,8 @@ function ViewReports() {
     const token = localStorage.getItem('token');
     try {
       const [salariesRes, expensesRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/salary', { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get('http://localhost:5000/api/expenses', { headers: { Authorization: `Bearer ${token}` } })
+        axios.get(`${API_BASE_URL}/api/salary`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE_URL}/api/expenses`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       setSalaries(salariesRes.data);
       setExpenses(expensesRes.data);
@@ -43,7 +44,7 @@ function ViewReports() {
       }
       if (month) params.month = month;
       
-      const response = await axios.get('http://localhost:5000/api/dashboard/search', {
+      const response = await axios.get(`${API_BASE_URL}/api/dashboard/search`, {
         params,
         headers: { Authorization: `Bearer ${token}` }
       });
